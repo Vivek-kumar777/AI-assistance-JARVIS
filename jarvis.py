@@ -28,20 +28,20 @@ def ask_jarvis(question):
     completion = client.chat.completions.create(
         model="openrouter/sonoma-sky-alpha",
         messages=[
-            {"role": "system", "content": "You are Jarvis, a helpful and witty AI assistant created by Vivek. Introduce yourself only when the user asks who you are or greets you."},
+            {"role": "system", "content": "You are Jarvis, a helpful and witty AI assistant created by jarvis. Introduce yourself only when the user asks who you are or greets you."},
             {"role": "system", "content": "Answer all user questions with some interactive emoji's."},
             {"role": "user", "content": question}
         ],
         extra_headers={
-            "HTTP-Referer": "https://code-with-vivek.netlify.app",
-            "X-Title": "code-with-vivek"
+            "HTTP-Referer": "https://code-with-jarvis.netlify.app",
+            "X-Title": "code-with-jarvis"
         }
     )
     return completion.choices[0].message.content
 
 # Main loop
 if __name__ == "__main__":
-    speak("initialising vivek")
+    speak("initialising jarvis")
     while True:
         with sr.Microphone() as source:
             r.adjust_for_ambient_noise(source, duration=0.5)
@@ -50,8 +50,8 @@ if __name__ == "__main__":
 
             try:
                 word = r.recognize_google(audio, language="en-IN")
-                if "vivek" == word.lower():
-                    print("vivek activated..")
+                if "jarvis" == word.lower():
+                    print("jarvis activated..")
                     speak("yes sir.")
 
                     while True:
