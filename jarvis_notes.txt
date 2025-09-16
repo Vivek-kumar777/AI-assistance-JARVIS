@@ -1,3 +1,6 @@
+first,
+      IMPORT ALL THE MODULES
+ FOR ACTIVATION OF JARVIS --  SAY -  "JARVIS"
 
 🎤 Speech Recognition Basics
 speech_recognition is module (library) , not class
@@ -61,3 +64,4 @@ Listens from the microphone 🎤
 Prints and speaks what you said
 
 Handles errors if it can’t recognize your voice or if internet is not available
+
