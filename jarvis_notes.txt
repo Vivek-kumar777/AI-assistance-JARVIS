@@ -1,0 +1,63 @@
+
+🎤 Speech Recognition Basics
+speech_recognition is module (library) , not class
+under speech_recognition __ Recognizer is a class
+
+Speech Recognition ka matlab hai user ki voice ko sunna aur usko text banake computer ko dena.
+Python me ye kaam karne ke liye ek bahut hi popular library hai:
+👉 speech_recognition
+Agar tum sr.Recognizer() nahi banao → to tumhare paas brain hi nahi hoga jo audio ko text me badal sake.
+
+Recognizer() is class in sr module(library) help to listen the voice 
+and convert it into text using google api(...and other)
+
+---methods inside Recognizer----
+listen(source) → microphone/audio source se awaaz (raw audio data) lena
+
+recognize_google(audio) → raw audio ko Google API se text me badalna
+
+adjust_for_ambient_noise(source) → background noise handle karna
+
+recognize_sphinx(audio) → offline recognition (Sphinx engine se)
+speech_recognition (module)
+│
+└── Recognizer (class)
+    │
+    ├── listen(source)           → mic se awaaz lena
+    ├── recognize_google(audio)  → awaaz → text (Google API)
+    ├── recognize_sphinx(audio)  → awaaz → text (offline Sphinx)
+    └── adjust_for_ambient_noise → background noise ignore
+
+Jab tu pyttsx3 use karta hai, to uska 3 step process hota hai:
+
+🔹 Step 1: Engine start karna
+engine = pyttsx3.init()
+
+
+👉 Ye line ek Text-to-Speech machine (engine) on kar deti hai.
+Jaise TV ka remote on karte ho, waise hi ye speech system ko ready kar deta hai.
+
+🔹 Step 2: Engine ko bolne ke liye text dena
+engine.say("Hello bhai, kaise ho?")
+say(text, name=None) ka 2nd argument optional hota hai
+ → ye text bolne ke liye nahi hai, sirf background tracking ke liye hota hai.
+
+👉 Is line ka matlab hai ki humne engine ko bola:
+"Ye text hai, isko awaaz me bol do."
+Abhi tak ye queue me store ho gaya hai, par bola nahi hai.
+
+🔹 Step 3: Engine ko chalana
+engine.runAndWait()
+
+👉 Ab engine ko “queue me jo text pada hai, usko awaaz me bol do” ka signal milta hai.
+Aur fir tumko speaker se awaaz sunai degi.
+
+✅ Now what happens:
+
+It speaks: “Hello, how are you?”
+
+Listens from the microphone 🎤
+
+Prints and speaks what you said
+
+Handles errors if it can’t recognize your voice or if internet is not available
